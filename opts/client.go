@@ -33,19 +33,19 @@ func (c *ClientConfig) Apply(opts ...DialOption) error {
 // WithInsecure returns a DialOption which disables transport security for this
 // ClientConn. Note that transport security is required unless WithInsecure is
 // set.
-func WithInsecure() DialOption {
-	return func(o *ClientConfig) error {
-		o.Insecure = true
-		o.TLSConf = &tls.Config{InsecureSkipVerify: true, NextProtos: []string{"grpc-quic-tls"}}
-		return nil
-	}
-}
+// func WithInsecure() DialOption {
+// 	return func(o *ClientConfig) error {
+// 		o.Insecure = true
+// 		o.TLSConf = &tls.Config{InsecureSkipVerify: true, NextProtos: []string{"grpc-quic-tls"}}
+// 		return nil
+// 	}
+// }
 
 func WithTLSConfig(tlsConf *tls.Config) DialOption {
 	return func(o *ClientConfig) error {
-		cfg := tlsConf.Clone()
+		// cfg := tlsConf.Clone()
 		// cfg.NextProtos = []string{"grpc-quic-tls"}
-		o.TLSConf = cfg
+		o.TLSConf = tlsConf
 		return nil
 	}
 }
