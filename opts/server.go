@@ -43,7 +43,7 @@ func Insecure() ServerOption {
 func TLSConfig(tlsConf *tls.Config) ServerOption {
 	return func(o *ServerConfig) error {
 		cfg := tlsConf.Clone()
-		cfg.NextProtos = []string{"grpc-quic-tls"}
+		// cfg.NextProtos = []string{"grpc-quic-tls"}
 		o.TLSConf = cfg
 		return nil
 	}

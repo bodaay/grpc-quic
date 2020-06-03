@@ -44,7 +44,7 @@ func WithInsecure() DialOption {
 func WithTLSConfig(tlsConf *tls.Config) DialOption {
 	return func(o *ClientConfig) error {
 		cfg := tlsConf.Clone()
-		cfg.NextProtos = []string{"grpc-quic-tls"}
+		// cfg.NextProtos = []string{"grpc-quic-tls"}
 		o.TLSConf = cfg
 		return nil
 	}
